@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 
-%define		_rc	rc1
+%define		_rc	rc2
 
 Summary:	System for using free software printer drivers
 Summary(pl):	System umo¿liwiaj±cy u¿ywanie darmowych sterowników drukarek
@@ -11,9 +11,7 @@ License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	8c117150f00f75cde9096dbe0cc1a30d
-Patch0:		%{name}-perl-doubledestdir.patch
-Patch1:		%{name}-symlinks.patch
+# Source0-md5:	866fb29353df43dff019ef1033a05b41
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.1
@@ -39,8 +37,6 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %prep
 %setup -q -n %{name}-%{version}%{_rc}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
