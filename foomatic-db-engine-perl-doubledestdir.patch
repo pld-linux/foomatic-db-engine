@@ -1,0 +1,14 @@
+diff -Nru foomatic-db-engine-3.0.0-org/Makefile.in foomatic-db-engine-3.0.0/Makefile.in
+--- foomatic-db-engine-3.0.0-org/Makefile.in	2003-12-11 22:04:16.047640544 +0100
++++ foomatic-db-engine-3.0.0/Makefile.in	2003-12-11 22:04:28.698717288 +0100
+@@ -179,8 +179,8 @@
+ #	This is the only way to get the Perl-generated Makefile using
+ #	$(DESTDIR) properly
+ 	( cd lib && \
+-	  $(MAKE) PREFIX=$(DESTDIR)$(PERLPREFIX) && \
+-	  $(MAKE) PREFIX=$(DESTDIR)$(PERLPREFIX) pure_install \
++	  $(MAKE) PREFIX=$(PERLPREFIX) && \
++	  $(MAKE) PREFIX=$(PERLPREFIX) pure_install \
+ 	)
+ 	install -d $(DESTDIR)$(BINDIR)
+ 	install -d $(DESTDIR)$(SBINDIR)
