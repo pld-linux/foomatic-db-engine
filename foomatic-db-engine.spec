@@ -9,6 +9,7 @@ Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 # Source0-md5:	a3c0b0fc6662a7b9afab09cbe74bb292
+Patch0:		%{name}-perl-doubledestdir.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.0
@@ -34,6 +35,7 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__aclocal}
