@@ -10,6 +10,7 @@ Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 # Source0-md5:	89070d0acc245d350faeb0c49a5f3f7f
+Patch0:		%{name}-noxml1.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.1
@@ -35,9 +36,10 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%{__aclocal}
+%{__aclocal} -I .
 %{__autoconf}
 %configure
 %{__make} \
