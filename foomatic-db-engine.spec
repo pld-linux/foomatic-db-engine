@@ -11,12 +11,12 @@ Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.g
 # Source0-md5:	a3c0b0fc6662a7b9afab09cbe74bb292
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	perl-devel
-BuildRequires:	libxml2-devel
 BuildRequires:	foomatic-filters >= 3.0.0
+BuildRequires:	libxml2-devel
+BuildRequires:	perl-devel
 Provides:	perl(Foomatic::GrovePath)
-Obsoletes:	foomatic
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	foomatic
 
 %description
 Foomatic is a system for using free software printer drivers with
@@ -54,16 +54,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-
 %doc ChangeLog TODO README USAGE
-%{_mandir}/man1/*
-%{_mandir}/man8/*
-
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/foomatic
-
 %attr(755,root,root) %{_bindir}/foomatic-*
 %attr(755,root,root) %{_sbindir}/foomatic-*
-
 %{perl_vendorlib}/Foomatic
-
 %{_datadir}/foomatic
+%{_mandir}/man1/*
+%{_mandir}/man8/*
