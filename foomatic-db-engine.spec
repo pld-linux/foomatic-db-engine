@@ -11,7 +11,7 @@ License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	a3c0b0fc6662a7b9afab09cbe74bb292
+# Source0-md5:	8c117150f00f75cde9096dbe0cc1a30d
 Patch0:		%{name}-perl-doubledestdir.patch
 Patch1:		%{name}-symlinks.patch
 BuildRequires:	autoconf
