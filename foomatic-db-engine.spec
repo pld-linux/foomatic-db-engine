@@ -3,7 +3,7 @@ Summary:	System for using free software printer drivers
 Summary(pl):	System umo¿liwiaj±cy u¿ywanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
 Version:	2.9.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
@@ -36,15 +36,14 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 %build
 %{__aclocal}
 %{__autoconf}
-
 %configure
-
-%{__make}
+%{__make} \
+	PERL_INSTALLDIRS=vendor
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR="$RPM_BUILD_ROOT"
-cp -fr $RPM_BUILD_ROOT$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libdir}
+%{__make} install \
+	DESTDIR="$RPM_BUILD_ROOT"
 
 install -d $RPM_BUILD_ROOT%{_datadir}/foomatic/db/source/{driver,opt,printer}
 
@@ -63,7 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/foomatic-*
 %attr(755,root,root) %{_sbindir}/foomatic-*
 
-%{perl_sitelib}/Foomatic
-%{perl_sitearch}/auto/Foomatic
+%{perl_vendorlib}/Foomatic
 
 %{_datadir}/foomatic
