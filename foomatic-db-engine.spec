@@ -1,18 +1,22 @@
 %include	/usr/lib/rpm/macros.perl
+
+%define		_rc	rc1
+
 Summary:	System for using free software printer drivers
 Summary(pl):	System umo¿liwiaj±cy u¿ywanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
-Version:	3.0.0
-Release:	0.1
+Version:	3.0.1
+Release:	0.%{_rc}.1
 License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
-Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.gz
+Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}%{_rc}.tar.gz
 # Source0-md5:	a3c0b0fc6662a7b9afab09cbe74bb292
 Patch0:		%{name}-perl-doubledestdir.patch
+Patch1:		%{name}-symlinks.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	foomatic-filters >= 3.0.0
+BuildRequires:	foomatic-filters >= 3.0.1
 BuildRequires:	libxml2-devel
 BuildRequires:	perl-devel
 Provides:	perl(Foomatic::GrovePath)
@@ -34,8 +38,9 @@ drukowanie bez kolejkowania oraz dowolny wolnodostêpny sterownik,
 dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_rc}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal}
@@ -46,6 +51,9 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+chmod +x mkinstalldirs
+
 %{__make} install \
 	DESTDIR="$RPM_BUILD_ROOT"
 
