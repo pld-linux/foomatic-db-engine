@@ -1,0 +1,16 @@
+diff -ur foomatic-db-engine-3.0.1.orig/configure.in foomatic-db-engine-3.0.1/configure.in
+--- foomatic-db-engine-3.0.1.orig/configure.in	2003-12-20 02:01:43.000000000 +0100
++++ foomatic-db-engine-3.0.1/configure.in	2004-08-10 02:23:36.855689448 +0200
+@@ -18,9 +18,9 @@
+ dnl LIBS="$LIBS"
+ 
+ AM_PATH_XML2(2.0.0)
+-if test ! -n "$XML_LIBS" ; then
+-  AM_PATH_XML(1.8.17)
+-fi
++#if test ! -n "$XML_LIBS" ; then
++#  AM_PATH_XML(1.8.17)
++#fi
+ dnl CFLAGS="$CFLAGS $XML_CFLAGS"
+ dnl LIBS="$LIBS $XML_LIBS"
+ 
