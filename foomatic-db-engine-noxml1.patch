@@ -1,6 +1,6 @@
-diff -ur foomatic-db-engine-3.0.1.orig/configure.in foomatic-db-engine-3.0.1/configure.in
---- foomatic-db-engine-3.0.1.orig/configure.in	2003-12-20 02:01:43.000000000 +0100
-+++ foomatic-db-engine-3.0.1/configure.in	2004-08-10 02:23:36.855689448 +0200
+diff -urN foomatic-db-engine-3.0.1.org/configure.in foomatic-db-engine-3.0.1/configure.in
+--- foomatic-db-engine-3.0.1.org/configure.in	2004-08-10 02:32:12.069058928 +0200
++++ foomatic-db-engine-3.0.1/configure.in	2004-08-10 02:32:27.552705056 +0200
 @@ -18,9 +18,9 @@
  dnl LIBS="$LIBS"
  
@@ -14,3 +14,15 @@ diff -ur foomatic-db-engine-3.0.1.orig/configure.in foomatic-db-engine-3.0.1/con
  dnl CFLAGS="$CFLAGS $XML_CFLAGS"
  dnl LIBS="$LIBS $XML_LIBS"
  
+diff -urN foomatic-db-engine-3.0.1.org/Makefile.in foomatic-db-engine-3.0.1/Makefile.in
+--- foomatic-db-engine-3.0.1.org/Makefile.in	2004-08-10 02:32:12.065059536 +0200
++++ foomatic-db-engine-3.0.1/Makefile.in	2004-08-10 02:33:01.803498144 +0200
+@@ -53,7 +53,7 @@
+ ## C settings
+ CC=@CC@
+ CFLAGS=@CFLAGS@
+-XML_CFLAGS=@XML_CFLAGS@
++XML_CFLAGS=@XML_CPPFLAGS@
+ XML_LIBS=@XML_LIBS@
+ 
+ ## Settings for Perl
