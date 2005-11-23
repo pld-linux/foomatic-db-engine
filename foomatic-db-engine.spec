@@ -2,14 +2,13 @@
 Summary:	System for using free software printer drivers
 Summary(pl):	System umo¿liwiaj±cy u¿ywanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
-Version:	3.0.1
-Release:	5
+Version:	3.0.2
+Release:	1
 License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.gz
-# Source0-md5:	89070d0acc245d350faeb0c49a5f3f7f
-Patch0:		%{name}-noxml1.patch
+# Source0-md5:	3061b8d3f7870467e6fbeae8d4399211
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.1
@@ -36,7 +35,6 @@ dla którego parametry zosta³y wprowadzone do bazy danych.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__aclocal} -I .
