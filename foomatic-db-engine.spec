@@ -11,7 +11,7 @@ Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.g
 # Source0-md5:	3061b8d3f7870467e6fbeae8d4399211
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	foomatic-filters >= 3.0.1
+BuildRequires:	foomatic-filters >= 3.0.2
 BuildRequires:	libxml2-devel
 BuildRequires:	perl-devel
 BuildRequires:	rpm-perlprov
