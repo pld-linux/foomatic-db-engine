@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	System for using free software printer drivers
-Summary(pl):	System umo縧iwiaj眂y u縴wanie darmowych sterownik體 drukarek
+Summary(pl.UTF-8):   System umo偶liwiaj膮cy u偶ywanie darmowych sterownik贸w drukarek
 Name:		foomatic-db-engine
 Version:	3.0.2
 Release:	3
@@ -25,12 +25,12 @@ common spoolers on Unix. It supports LPD, PDQ, CUPS, the VA Linux LPD,
 LPRng, PPR, and direct spooler-less printing and any free software
 driver for which execution data has been entered in the database.
 
-%description -l pl
-Foomatic to system pozwalaj眂y na u縴wanie wolnodost阷nych sterownik體
-drukarek z popularnymi uniksowymi serwerami wydruk體. Obs硊guje LPD,
-PDQ, CUPS, VA Linux LPD, LPRng, PPR i bezpo秗ednie drukowanie bez
-kolejkowania oraz dowolny wolnodost阷ny sterownik, dla kt髍ego
-parametry zosta硑 wprowadzone do bazy danych.
+%description -l pl.UTF-8
+Foomatic to system pozwalaj膮cy na u偶ywanie wolnodost臋pnych sterownik贸w
+drukarek z popularnymi uniksowymi serwerami wydruk贸w. Obs艂uguje LPD,
+PDQ, CUPS, VA Linux LPD, LPRng, PPR i bezpo艣rednie drukowanie bez
+kolejkowania oraz dowolny wolnodost臋pny sterownik, dla kt贸rego
+parametry zosta艂y wprowadzone do bazy danych.
 
 %prep
 %setup -q
