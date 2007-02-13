@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	System for using free software printer drivers
-Summary(pl.UTF-8):   System umożliwiający używanie darmowych sterowników drukarek
+Summary(pl.UTF-8):	System umożliwiający używanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
 Version:	3.0.2
 Release:	3
