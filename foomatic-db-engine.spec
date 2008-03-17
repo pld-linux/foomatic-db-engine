@@ -1,14 +1,15 @@
 %include	/usr/lib/rpm/macros.perl
+%define		snap	20080317
 Summary:	System for using free software printer drivers
 Summary(pl.UTF-8):	System umożliwiający używanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
-Version:	3.0.2
-Release:	3
+Version:	3.0.%{snap}
+Release:	1
 License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
-Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}.tar.gz
-# Source0-md5:	3061b8d3f7870467e6fbeae8d4399211
+Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{snap}.tar.gz
+# Source0-md5:	d6ac64aeaa1f6ecdf386df6b6ad380a7
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.2
@@ -33,7 +34,7 @@ kolejkowania oraz dowolny wolnodostępny sterownik, dla którego
 parametry zostały wprowadzone do bazy danych.
 
 %prep
-%setup -q
+%setup -q -n %{name}-3.0-%{snap}
 
 %build
 %{__aclocal} -I .
@@ -63,6 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/foomatic
 %attr(755,root,root) %{_bindir}/foomatic-*
 %attr(755,root,root) %{_sbindir}/foomatic-*
+%attr(755,root,root) %{_libdir}/cups/driver/foomatic
 %{perl_vendorlib}/Foomatic
 %{_datadir}/foomatic
 %{_mandir}/man1/*
