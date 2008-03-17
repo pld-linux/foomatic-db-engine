@@ -7,11 +7,11 @@ Version:	3.0.%{snap}
 Release:	2
 License:	GPL
 Group:		Applications/System
-URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{snap}.tar.gz
 # Source0-md5:	d6ac64aeaa1f6ecdf386df6b6ad380a7
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-cups.patch
+URL:		http://www.linuxprinting.org/foomatic.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	foomatic-filters >= 3.0.20080317
