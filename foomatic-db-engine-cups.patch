@@ -1,0 +1,15 @@
+--- foomatic-db-engine-3.0-20080317/Makefile.in~	2008-03-17 17:45:02.000000000 +0100
++++ foomatic-db-engine-3.0-20080317/Makefile.in	2008-03-17 17:47:12.470501553 +0100
+@@ -206,10 +206,8 @@
+ #	Link foomatic-ppdfile to the CUPS 1.2 PPD generator directory,
+ #	so that the cups-driverd automatically generates Foomatic PPDs
+ #	on demand (/usr/lib/cups/driver).
+-	if [ -d $(LIB_CUPS) ]; then \
+-	  ${SRC}/mkinstalldirs $(DESTDIR)$(CUPS_DRIVER); \
+-	  ln -sf $(BINDIR)/foomatic-ppdfile $(DESTDIR)$(CUPS_DRIVER)/foomatic; \
+-	fi
++	${SRC}/mkinstalldirs $(DESTDIR)$(CUPS_DRIVER); \
++	ln -sf $(BINDIR)/foomatic-ppdfile $(DESTDIR)$(CUPS_DRIVER)/foomatic; \
+ 
+ install-man: check-config
+ 	${SRC}/mkinstalldirs $(DESTDIR)$(MANDIR)

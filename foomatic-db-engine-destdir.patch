@@ -1,0 +1,11 @@
+--- foomatic-db-engine-3.0-20080317/Makefile.in~	2008-03-17 08:20:03.000000000 +0100
++++ foomatic-db-engine-3.0-20080317/Makefile.in	2008-03-17 17:43:35.485414506 +0100
+@@ -188,7 +188,7 @@
+ #	$(DESTDIR) properly
+ 	( cd lib && \
+ 	  $(MAKE) PREFIX=$(PERLPREFIX) && \
+-	  $(MAKE) PREFIX=$(DESTDIR)$(PERLPREFIX) pure_install \
++	  $(MAKE) PREFIX=$(PERLPREFIX) pure_install \
+ 	)
+ 	${SRC}/mkinstalldirs $(DESTDIR)$(BINDIR)
+ 	${SRC}/mkinstalldirs $(DESTDIR)$(SBINDIR)
