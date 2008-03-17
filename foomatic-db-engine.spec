@@ -4,21 +4,25 @@ Summary:	System for using free software printer drivers
 Summary(pl.UTF-8):	System umożliwiający używanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
 Version:	3.0.%{snap}
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 URL:		http://www.linuxprinting.org/foomatic.html
 Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{snap}.tar.gz
 # Source0-md5:	d6ac64aeaa1f6ecdf386df6b6ad380a7
+Patch0:		%{name}-destdir.patch
+Patch1:		%{name}-cups.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	foomatic-filters >= 3.0.2
+BuildRequires:	foomatic-filters >= 3.0.20080317
 BuildRequires:	libxml2-devel
 BuildRequires:	perl-devel
 BuildRequires:	rpm-perlprov
 Provides:	perl(Foomatic::GrovePath)
 Obsoletes:	foomatic
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define	_ulibdir	%{_prefix}/lib
 
 %description
 Foomatic is a system for using free software printer drivers with
@@ -35,13 +39,14 @@ parametry zostały wprowadzone do bazy danych.
 
 %prep
 %setup -q -n %{name}-3.0-%{snap}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal} -I .
 %{__autoconf}
 %configure
 %{__make} \
-	PERLPREFIX=/usr \
 	PERL_INSTALLDIRS=vendor
 
 %install
@@ -50,7 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 chmod +x mkinstalldirs
 
 %{__make} install \
-	PERLPREFIX=/usr \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_datadir}/foomatic/db/source/{driver,opt,printer}
@@ -64,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/foomatic
 %attr(755,root,root) %{_bindir}/foomatic-*
 %attr(755,root,root) %{_sbindir}/foomatic-*
-%attr(755,root,root) %{_libdir}/cups/driver/foomatic
+%attr(755,root,root) %{_ulibdir}/cups/driver/foomatic
 %{perl_vendorlib}/Foomatic
 %{_datadir}/foomatic
 %{_mandir}/man1/*
