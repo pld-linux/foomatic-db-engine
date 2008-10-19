@@ -54,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 chmod +x mkinstalldirs
 
+%{__sed} -i 's,PREFIX =.*,PREFIX = %{_prefix},g' lib/Makefile
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
