@@ -1,20 +1,20 @@
 %include	/usr/lib/rpm/macros.perl
-%define		snap	20080317
+%define		mver	4.0
+%define		snap	20110615
 Summary:	System for using free software printer drivers
 Summary(pl.UTF-8):	System umożliwiający używanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
-Version:	3.0.%{snap}
-Release:	4
+Version:	%{mver}.%{snap}
+Release:	1
 License:	GPL
 Group:		Applications/System
-Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{snap}.tar.gz
-# Source0-md5:	d6ac64aeaa1f6ecdf386df6b6ad380a7
-Patch0:		%{name}-destdir.patch
-Patch1:		%{name}-cups.patch
+Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{mver}-%{snap}.tar.gz
+# Source0-md5:	455b22f44b73c65adcc30fc9a6313a75
+Patch0:		%{name}-cups.patch
 URL:		http://www.linuxprinting.org/foomatic.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	foomatic-filters >= 3.0.20080317
+BuildRequires:	foomatic-filters >= 4.0.7
 BuildRequires:	libxml2-devel
 BuildRequires:	perl-devel
 BuildRequires:	rpm-perlprov
@@ -38,9 +38,8 @@ kolejkowania oraz dowolny wolnodostępny sterownik, dla którego
 parametry zostały wprowadzone do bazy danych.
 
 %prep
-%setup -q -n %{name}-3.0-%{snap}
+%setup -q -n %{name}-%{mver}-%{snap}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal} -I .
