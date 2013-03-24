@@ -1,24 +1,26 @@
 %include	/usr/lib/rpm/macros.perl
-%define		mver	4.0
-%define		snap	20110615
 Summary:	System for using free software printer drivers
 Summary(pl.UTF-8):	System umożliwiający używanie darmowych sterowników drukarek
 Name:		foomatic-db-engine
-Version:	%{mver}.%{snap}
+Version:	4.0.9
 Release:	1
-License:	GPL
+Epoch:		1
+License:	GPL v2+
 Group:		Applications/System
-Source0:	http://www.linuxprinting.org/download/foomatic/%{name}-%{mver}-%{snap}.tar.gz
-# Source0-md5:	455b22f44b73c65adcc30fc9a6313a75
+Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
+# Source0-md5:	5b33c1adb21e7b6f3652e9a18d0e6f4e
 Patch0:		%{name}-cups.patch
 URL:		http://www.linuxprinting.org/foomatic.html
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	foomatic-filters >= 4.0.7
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2
 BuildRequires:	perl-devel
 BuildRequires:	rpm-perlprov
 Provides:	perl(Foomatic::GrovePath)
+Suggests:	a2ps
+Suggests:	foomatic-filters >= 4.0.7
+Suggests:	ghostscript
+Suggests:	wget
 Obsoletes:	foomatic
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -38,13 +40,17 @@ kolejkowania oraz dowolny wolnodostępny sterownik, dla którego
 parametry zostały wprowadzone do bazy danych.
 
 %prep
-%setup -q -n %{name}-%{mver}-%{snap}
+%setup -q
 %patch0 -p1
 
 %build
 %{__aclocal} -I .
 %{__autoconf}
-%configure
+%configure \
+	A2PS=/usr/bin/a2ps \
+	GS=/usr/bin/gs \
+	WGET=/usr/bin/wget \
+	--disable-gscheck
 %{__make} \
 	PERL_INSTALLDIRS=vendor
 
@@ -64,12 +70,40 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog TODO README USAGE
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/foomatic
-%attr(755,root,root) %{_bindir}/foomatic-*
-%attr(755,root,root) %{_sbindir}/foomatic-*
+%doc ChangeLog README TODO USAGE
+# XXX: dir shared with foomatic-filters
+%dir %{_sysconfdir}/foomatic
+%attr(755,root,root) %{_bindir}/foomatic-combo-xml
+%attr(755,root,root) %{_bindir}/foomatic-compiledb
+%attr(755,root,root) %{_bindir}/foomatic-configure
+%attr(755,root,root) %{_bindir}/foomatic-datafile
+%attr(755,root,root) %{_bindir}/foomatic-perl-data
+%attr(755,root,root) %{_bindir}/foomatic-ppd-options
+%attr(755,root,root) %{_bindir}/foomatic-ppd-to-xml
+%attr(755,root,root) %{_bindir}/foomatic-ppdfile
+%attr(755,root,root) %{_bindir}/foomatic-printjob
+%attr(755,root,root) %{_bindir}/foomatic-searchprinter
+%attr(755,root,root) %{_sbindir}/foomatic-addpjloptions
+%attr(755,root,root) %{_sbindir}/foomatic-cleanupdrivers
+%attr(755,root,root) %{_sbindir}/foomatic-extract-text
+%attr(755,root,root) %{_sbindir}/foomatic-fix-xml
+%attr(755,root,root) %{_sbindir}/foomatic-getpjloptions
+%attr(755,root,root) %{_sbindir}/foomatic-kitload
+%attr(755,root,root) %{_sbindir}/foomatic-nonumericalids
+%attr(755,root,root) %{_sbindir}/foomatic-preferred-driver
+%attr(755,root,root) %{_sbindir}/foomatic-printermap-to-gutenprint-xml
+%attr(755,root,root) %{_sbindir}/foomatic-replaceoldprinterids
 %attr(755,root,root) %{_ulibdir}/cups/driver/foomatic
 %{perl_vendorlib}/Foomatic
 %{_datadir}/foomatic
-%{_mandir}/man1/*
-%{_mandir}/man8/*
+%{_mandir}/man1/foomatic-combo-xml.1*
+%{_mandir}/man1/foomatic-compiledb.1*
+%{_mandir}/man1/foomatic-configure.1*
+%{_mandir}/man1/foomatic-perl-data.1*
+%{_mandir}/man1/foomatic-ppd-options.1*
+%{_mandir}/man1/foomatic-ppdfile.1*
+%{_mandir}/man1/foomatic-printjob.1*
+%{_mandir}/man8/foomatic-addpjloptions.8*
+%{_mandir}/man8/foomatic-getpjloptions.8*
+%{_mandir}/man8/foomatic-kitload.8*
+%{_mandir}/man8/foomatic-preferred-driver.8*
