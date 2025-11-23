@@ -15,6 +15,7 @@ BuildRequires:	automake
 BuildRequires:	libxml2-devel >= 2
 BuildRequires:	perl-devel
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpmbuild(macros) >= 1.745
 Provides:	perl(Foomatic::GrovePath)
 Suggests:	a2ps
 Suggests:	foomatic-filters >= 4.0.7
