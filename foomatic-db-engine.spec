@@ -6,10 +6,10 @@ Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
+Source0:	https://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 # Source0-md5:	f178947ca0437d85823a247f5725e6eb
 Patch0:		%{name}-cups.patch
-URL:		http://www.linuxprinting.org/foomatic.html
+URL:		https://www.linuxprinting.org/foomatic.html
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libxml2-devel >= 2
@@ -20,7 +20,7 @@ Suggests:	a2ps
 Suggests:	foomatic-filters >= 4.0.7
 Suggests:	ghostscript
 Suggests:	wget
-Obsoletes:	foomatic
+Obsoletes:	foomatic < 20020720
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_ulibdir	%{_prefix}/lib
@@ -50,6 +50,7 @@ parametry zostały wprowadzone do bazy danych.
 	GS=/usr/bin/gs \
 	WGET=/usr/bin/wget \
 	--disable-gscheck
+
 %{__make} \
 	PERL_INSTALLDIRS=vendor
 
