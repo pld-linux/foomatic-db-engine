@@ -9,7 +9,7 @@ Group:		Applications/System
 Source0:	https://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 # Source0-md5:	f178947ca0437d85823a247f5725e6eb
 Patch0:		%{name}-cups.patch
-URL:		https://www.linuxprinting.org/foomatic.html
+URL:		https://wiki.linuxfoundation.org/openprinting/database/foomatic
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libxml2-devel >= 2
